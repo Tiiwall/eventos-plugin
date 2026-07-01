@@ -1,4 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+
+/*
+cores lbc
+--e-global-color-primary: #067A96;
+--e-global-color-secondary: #010F3E;
+--e-global-color-text: #000000;
+--e-global-color-accent: #67C0C2;
+--e-global-color-b3af55e: #F4F4F4;
+
+
+*/
 
 .lbc-eventos-grid {
   margin-top: 1.5rem;
@@ -41,6 +52,7 @@
   font-weight: 700;
   line-height: 1.35;
   transition: color .25s ease;
+
 }
 
 .lbc-card-link:hover .lbc-card-title {
