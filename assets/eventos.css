@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+.lbc-eventos-grid {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.lbc-card {
+  border-radius: .75rem !important;
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+  background: #fff;
+}
+
+.lbc-card-link:hover .lbc-card,
+.lbc-card-link:focus .lbc-card {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(6, 122, 150, .15) !important;
+}
+
+.lbc-card-img-wrap {
+  height: 220px;
+  background: #F4F4F4;
+}
+
+.lbc-card-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .25s ease;
+}
+
+.lbc-card-link:hover .lbc-card-img {
+  transform: scale(1.04);
+}
+
+.lbc-card-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #000000;
+  font-weight: 700;
+  line-height: 1.35;
+  transition: color .25s ease;
+}
+
+.lbc-card-link:hover .lbc-card-title {
+  color: #067A96;
+}
+
+.lbc-card-meta {
+  font-family: 'Montserrat', sans-serif;
+  font-size: .875rem;
+  color: #444444;
+}
+
+.lbc-meta-icon {
+  font-size: 1rem !important;
+  color: #067A96;
+  flex-shrink: 0;
+  width: 1.1rem;
+  text-align: center;
+}
+
+.lbc-no-events {
+  padding: 2rem;
+  text-align: center;
+  background: #F4F4F4;
+  border-radius: .75rem;
+  color: #444444;
+  border: 1px dashed #F4F4F4;
+}
+
+.lbc-single-evento {
+  background: #fff;
+}
+
+.lbc-single-title {
+  font-family: 'Montserrat', sans-serif;
+  color: #000000;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.lbc-single-meta {
+  border: 1px solid #F4F4F4;
+}
+
+.lbc-meta-icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(6, 122, 150, .10);
+  flex-shrink: 0;
+}
+
+.lbc-meta-icon-wrap .dashicons {
+  color: #067A96;
+  font-size: 1.1rem !important;
+  width: auto;
+  height: auto;
+}
+
+.lbc-featured-img {
+  max-height: 520px;
+  object-fit: cover;
+}
+
+.lbc-content {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: #000000;
+}
+
+.lbc-content p { margin-bottom: 1.25rem; }
+
+.lbc-content h2,
+.lbc-content h3,
+.lbc-content h4 {
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: .75rem;
+  color: #000000;
+}
+
+.lbc-single-nav .btn {
+  font-size: .875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+}
+
+.lbc-single-nav .btn .dashicons {
+  font-size: 1rem !important;
+  width: auto;
+  height: auto;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 575.98px) {
+  .lbc-card-img-wrap { height: 180px; }
+  .lbc-single-meta   { flex-direction: column; gap: 1rem !important; }
+}
