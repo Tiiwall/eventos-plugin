@@ -1,11 +1,19 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit;
+/**
+ * Template single para o Custom Post Type "evento"
+ * Plugin: Eventos Plugin
+ */
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+// Enqueue Bootstrap se não estiver carregado
 if ( ! wp_style_is( 'bootstrap', 'enqueued' ) ) {
     wp_enqueue_style( 'bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css', array(), '5.3.3' );
 }
 wp_enqueue_style( 'dashicons' );
-wp_enqueue_style( 'lbc-eventos', plugin_dir_url( dirname( __FILE__ ) ) . 'assets/eventos.css', array(), '1.0.0' );
+wp_enqueue_style( 'ep-eventos', plugin_dir_url( dirname( __FILE__ ) ) . 'assets/eventos.css', array(), '1.0.0' );
 
 get_header();
 
@@ -20,25 +28,28 @@ while ( have_posts() ) : the_post();
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
-<main id="lbc-single-evento" class="lbc-single-evento py-5">
+<main id="ep-single-evento" class="ep-single-evento py-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-9 col-xl-8">
 
+                <!-- Breadcrumb -->
                 <nav aria-label="breadcrumb" class="mb-4">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Início</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo esc_url( get_post_type_archive_link( 'evento' ) ); ?>">Eventos</a></li>
                         <li class="breadcrumb-item active" aria-current="page"><?php the_title(); ?></li>
                     </ol>
                 </nav>
 
-                <h1 class="lbc-single-title display-5 fw-bold mb-4"><?php the_title(); ?></h1>
+                <!-- Título -->
+                <h1 class="ep-single-title display-5 fw-bold mb-4"><?php the_title(); ?></h1>
 
-                <div class="lbc-single-meta d-flex flex-wrap gap-4 mb-5 p-4 rounded-3 bg-light">
+                <!-- Meta do Evento -->
+                <div class="ep-single-meta d-flex flex-wrap gap-4 mb-5 p-4 rounded-3 bg-light">
                     <?php if ( $data_fmt ) : ?>
-                    <div class="lbc-meta-item d-flex align-items-center gap-2">
-                        <span class="lbc-meta-icon-wrap d-flex align-items-center justify-content-center rounded-circle">
+                    <div class="ep-meta-item d-flex align-items-center gap-2">
+                        <span class="ep-meta-icon-wrap d-flex align-items-center justify-content-center rounded-circle">
                             <span class="dashicons dashicons-calendar-alt fs-5" aria-hidden="true"></span>
                         </span>
                         <div>
@@ -49,8 +60,8 @@ while ( have_posts() ) : the_post();
                     <?php endif; ?>
 
                     <?php if ( $local ) : ?>
-                    <div class="lbc-meta-item d-flex align-items-center gap-2">
-                        <span class="lbc-meta-icon-wrap d-flex align-items-center justify-content-center rounded-circle">
+                    <div class="ep-meta-item d-flex align-items-center gap-2">
+                        <span class="ep-meta-icon-wrap d-flex align-items-center justify-content-center rounded-circle">
                             <span class="dashicons dashicons-location fs-5" aria-hidden="true"></span>
                         </span>
                         <div>
@@ -61,8 +72,8 @@ while ( have_posts() ) : the_post();
                     <?php endif; ?>
 
                     <?php if ( $organizador ) : ?>
-                    <div class="lbc-meta-item d-flex align-items-center gap-2">
-                        <span class="lbc-meta-icon-wrap d-flex align-items-center justify-content-center rounded-circle">
+                    <div class="ep-meta-item d-flex align-items-center gap-2">
+                        <span class="ep-meta-icon-wrap d-flex align-items-center justify-content-center rounded-circle">
                             <span class="dashicons dashicons-admin-users fs-5" aria-hidden="true"></span>
                         </span>
                         <div>
@@ -73,20 +84,23 @@ while ( have_posts() ) : the_post();
                     <?php endif; ?>
                 </div>
 
+                <!-- Imagem de Destaque -->
                 <?php if ( has_post_thumbnail() ) : ?>
-                <figure class="lbc-single-thumbnail mb-5">
+                <figure class="ep-single-thumbnail mb-5">
                     <?php the_post_thumbnail( 'large', array(
-                        'class' => 'lbc-featured-img img-fluid rounded-3 w-100 object-fit-cover shadow-sm',
+                        'class' => 'ep-featured-img img-fluid rounded-3 w-100 object-fit-cover shadow-sm',
                         'alt'   => get_the_title(),
                     ) ); ?>
                 </figure>
                 <?php endif; ?>
 
-                <div class="lbc-single-content lbc-content">
+                <!-- Conteúdo -->
+                <div class="ep-single-content ep-content">
                     <?php the_content(); ?>
                 </div>
 
-                <div class="lbc-single-nav d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
+                <!-- Navegação -->
+                <div class="ep-single-nav d-flex justify-content-between align-items-center mt-5 pt-4 border-top">
                     <a href="<?php echo esc_url( get_post_type_archive_link( 'evento' ) ); ?>" class="btn btn-outline-secondary">
                         <span class="dashicons dashicons-arrow-left-alt me-1" aria-hidden="true"></span>
                         Todos os Eventos
@@ -95,7 +109,8 @@ while ( have_posts() ) : the_post();
                         <?php
                         $prev = get_previous_post();
                         $next = get_next_post();
-                        if ( $prev ) : ?>
+                        if ( $prev ) :
+                        ?>
                         <a href="<?php echo esc_url( get_permalink( $prev ) ); ?>" class="btn btn-outline-primary" title="<?php echo esc_attr( get_the_title( $prev ) ); ?>">
                             <span class="dashicons dashicons-arrow-left-alt2" aria-hidden="true"></span>
                         </a>
